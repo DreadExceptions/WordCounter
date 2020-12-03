@@ -62,18 +62,9 @@ public class word {
     public void incrementFrequency(){this.frequency++;}
     public void addFrequency(int frqnc){this.frequency += frqnc;}
     
-    public boolean alphabetize(word diff){ //if "this" comes first, then false.
-        for (int i = 0; i < this.length; i++) {
-            if (diff.getLength() <= i) {
-                return true; //if this is longer, then diff goes first
-            } else if (this.getLetters().charAt(i) > diff.getLetters().charAt(i)) {
-                return true; //if this letter is 'bigger', then switch
-            } else if (this.getLetters().charAt(i) < diff.getLetters().charAt(i)) {
-                return false; //if this letter is 'smaller', then leave alone
-            }
+    public int alphabetize(word diff){ //if "this" comes first, then false.
+        return this.getLetters().compareTo(diff.getLetters());
         }
-        return false;
-    }
     
     public boolean freqCompare(word diff){
         if (this.getFrequency() > diff.getFrequency()) {
@@ -86,7 +77,7 @@ public class word {
     @Override
     public String toString(){
         return this.letters + " has " + this.length + " Letter(s) and " + this.syllables + 
-                " Syllable(s) and occurs " + this.frequency + " time(s).";
+                " Syllable(s) and occurs " + this.frequency + " time(s)";
     }
     
 }
