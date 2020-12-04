@@ -80,19 +80,60 @@ public class wordList {
         return false;
     }
     
-    public boolean alphabetizeList(){
-        //alphabetizes the list
+    public boolean mergeSort(int lft, int rght, boolean type){
+        //type == true if alphabetize, type == false if frequency
+        if (rght > lft) {
+            int mddl = (lft + rght)/2;
+            this.mergeSort(lft, mddl, type);
+            this.mergeSort(mddl+1, rght, type);
+            this.merge(lft, mddl, rght, type);
+        }
         return false;
     }
     
-    public boolean frequencyList(){
-        //sorts list by frequency
-        return false;
+    public void merge(int lft, int mddl, int rght, boolean type){
+        int ndx1 = lft;
+        int ndx2 = mddl+1;
+        word tmp;
+        //System.out.println(ndx1 + " " + ndx2 + " " + rght);
+        if (type) {//alphabetize
+            while ((ndx1 < ndx2)&&(ndx2 <= rght)) {
+                if (this.lstWrds.get(ndx1).alphabetize(this.lstWrds.get(ndx2)) < 0) {
+                    ndx1++;
+                } else if (this.lstWrds.get(ndx1).alphabetize(this.lstWrds.get(ndx2)) > 0) {
+                    tmp = this.lstWrds.get(ndx2);
+                    this.lstWrds.remove(ndx2);
+                    this.lstWrds.add(ndx1, tmp);
+                    ndx1++;
+                    ndx2++;
+                } else {
+                    //this is where it will merge words that are the same
+                }
+            }
+        } else {//frequency
+            while ((ndx1 < ndx2)&&(ndx2 <= rght)) {
+                if (this.lstWrds.get(ndx1).freqCompare(this.lstWrds.get(ndx2))) {
+                    ndx1++;
+                } else {
+                    tmp = this.lstWrds.get(ndx2);
+                    this.lstWrds.remove(ndx2);
+                    this.lstWrds.add(ndx1, tmp);
+                    ndx1++;
+                    ndx2++;
+                }
+            }
+        }
+        System.out.println(this.listToString());
     }
     
-    public wordList topTenFrequency(){
-        //returns top ten most frequent words
-        return new wordList();
+    public ArrayList<word> topTenFrequency(){
+        int sz = this.lstWrds.size()-1;
+        this.mergeSort(0, sz, false);
+        ArrayList<word> tptn = new ArrayList();
+        for (int i = sz; (i > sz - 10) && (i >= 0); i--) {
+            tptn.add(this.lstWrds.get(i));
+        }
+        return tptn;
     }
     
     public String listToString(){

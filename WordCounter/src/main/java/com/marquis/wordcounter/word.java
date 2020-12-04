@@ -23,11 +23,12 @@ public class word {
     this.setSyllables();
     }//end constructor
     
-    public word (String lttrs, int lngth, int sllbls, int frqncy){
+    public word (String lttrs, int frqncy){
     this.letters = lttrs;
-    this.length = lngth;
-    this.syllables = sllbls;
+    this.length = this.letters.length();
+    this.syllables = 0;
     this.frequency = frqncy;
+    this.setSyllables();
     }//end constructor
     
     public void setLetters(String lttrs) {this.letters = lttrs;}

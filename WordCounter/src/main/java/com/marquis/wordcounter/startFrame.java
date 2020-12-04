@@ -55,32 +55,25 @@ public class startFrame extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         ArrayList<word> tst = new ArrayList<>();
+        tst.add(new word("beta"));
+        tst.add(new word("kilt", 5));
+        tst.add(new word("listen", 2));
+        tst.add(new word("fahrenheit"));
+        tst.add(new word("charlie", 6));
+        tst.add(new word("delta", 3));
+        tst.add(new word("hotel", 7));
+        tst.add(new word("nautical", 4));
+        tst.add(new word("item", 2));
+        tst.add(new word("jerry", 3));
+        tst.add(new word("alpha"));
+        tst.add(new word("moment", 10));
+        tst.add(new word("omniscient"));
+        tst.add(new word("powerful"));
+        tst.add(new word("epsilon"));
+        tst.add(new word("grand"));
         wordList tstr = new wordList(tst);
-        tstr.enterWord("beta");
-        tstr.enterWord("kilt");
-        tstr.enterWord("listen");
-        tstr.enterWord("kilt");
-        tstr.enterWord("kilt");
-        tstr.enterWord("nautical");
-        tstr.enterWord("fahrenheit");
-        tstr.enterWord("charlie");
-        tstr.enterWord("delta");
-        tstr.enterWord("hotel");
-        tstr.enterWord("nautical");
-        tstr.enterWord("nautical");
-        tstr.enterWord("item");
-        tstr.enterWord("jerry");
-        tstr.enterWord("jerry");
-        tstr.enterWord("kilt");
-        tstr.enterWord("alpha");
-        tstr.enterWord("moment");
-        tstr.enterWord("jerry");
-        tstr.enterWord("omniscient");
-        tstr.enterWord("powerful");
-        tstr.enterWord("epsilon");
-        tstr.enterWord("fahrenheit");
-        tstr.enterWord("grand");
-        tstr.enterWord("kilt");
+        System.out.println(tstr.listToString());
+        tstr.mergeSort(0, tst.size()-1, false);
         System.out.println(tstr.listToString());
         
         /* Set the Nimbus look and feel */
