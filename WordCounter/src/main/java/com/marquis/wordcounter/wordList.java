@@ -13,16 +13,28 @@ import java.util.ArrayList;
  */
 public class wordList {
     private ArrayList<word> lstWrds;
+    private String passage;
+    private final String RGX = "[\\W]"; //regex to exclude all non letters/numbers.
     
     public wordList() {
         this.lstWrds = new ArrayList<word>();
+        this.passage = null;
     }
     
     public wordList(ArrayList<word> lw) {
         this.lstWrds = lw;
+        this.passage = null;
     }
     
+    public wordList(String pssg){
+        this.lstWrds = new ArrayList<word>();
+        this.passage = pssg;
+        this.wordsFound();
+    }
+    
+    public void setPassage(String pssg) {this.passage = pssg;}
     public void setWordList(ArrayList<word> lw) {this.lstWrds = lw;}
+    public String getPassage() {return this.passage;}
     public ArrayList<word> getWordList(){return this.lstWrds;}
     
     public boolean enterWord(String ltr){//returns false if word is old, true if word is new
@@ -32,7 +44,6 @@ public class wordList {
                 this.lstWrds.add(e);
                 return true;
             } else if (this.lstWrds.get(0).getLetters().compareTo(ltr) > 0) {
-                System.out.println(ltr);
                 this.lstWrds.add(0, e);
                 return true;
             } else {
@@ -123,7 +134,6 @@ public class wordList {
                 }
             }
         }
-        System.out.println(this.listToString());
     }
     
     public ArrayList<word> topTenFrequency(){
@@ -144,6 +154,15 @@ public class wordList {
             i++;
         }
         return str;
+    }
+    
+    public void wordsFound(){
+        String words[] = passage.split(RGX);
+        for (int i = 0; i < words.length; i++) {
+            if (!words[i].equals("")) {
+                this.enterWord(words[i].toLowerCase());
+            }//end if
+        }
     }
     
 }

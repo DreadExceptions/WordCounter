@@ -6,7 +6,10 @@
 
 package com.marquis.wordcounter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,9 +17,7 @@ import java.util.ArrayList;
  */
 public class startFrame extends javax.swing.JFrame {
 
-    private final String tester = "Scotty is a man and Scotty likes bacon. I also like bacon. Everyone likes bacon.";
-    private final String RGX = "[\\W]"; //regex to exclude all non letters/numbers.
-    
+    private final String tester = "Scotty is a man and Scotty likes bacon. I also like bacon. Everyone likes bacon.";    
     
     // I Want to exclude numbers and include apostrophes.
     
@@ -34,17 +35,127 @@ public class startFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        topTable = new javax.swing.JTable();
+        estAvgSyl = new javax.swing.JLabel();
+        estTotSyl = new javax.swing.JLabel();
+        uniqueWrds = new javax.swing.JLabel();
+        totWrds = new javax.swing.JLabel();
+        avgWrdLng = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Total Words:");
+
+        jLabel2.setText("Unique Words:");
+
+        jLabel3.setText("Average Word Length:");
+
+        jLabel4.setText("Est. Total Syllables:");
+
+        jLabel5.setText("Est. Average Syllables:");
+
+        jLabel6.setText("Top Words:");
+
+        topTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Word", "Syllables", "Count"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(topTable);
+
+        estAvgSyl.setText("estAvgSyl");
+
+        estTotSyl.setText("estTotSyl");
+
+        uniqueWrds.setText("uniqueWrds");
+
+        totWrds.setText("totWrds");
+
+        avgWrdLng.setText("avgWrdLng");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(avgWrdLng)
+                            .addComponent(totWrds)
+                            .addComponent(estTotSyl)
+                            .addComponent(estAvgSyl)
+                            .addComponent(uniqueWrds))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(totWrds))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(uniqueWrds))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(avgWrdLng))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(estTotSyl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(estAvgSyl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -54,7 +165,10 @@ public class startFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ArrayList<word> tst = new ArrayList<>();
+        String hey = "Scotty likes bacon. I also like bacon. Everyone likes bacon.";
+        wordList tstr = new wordList(hey);
+        
+        /*ArrayList<word> tst = new ArrayList<>();
         tst.add(new word("beta"));
         tst.add(new word("kilt", 5));
         tst.add(new word("listen", 2));
@@ -74,7 +188,7 @@ public class startFrame extends javax.swing.JFrame {
         wordList tstr = new wordList(tst);
         System.out.println(tstr.listToString());
         tstr.mergeSort(0, tst.size()-1, false);
-        System.out.println(tstr.listToString());
+        System.out.println(tstr.listToString());*/
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -102,12 +216,57 @@ public class startFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new startFrame().setVisible(true);
+                startFrame GUI = new startFrame();
+                GUI.computeVariablesForGUI(tstr);
+                GUI.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel avgWrdLng;
+    private javax.swing.JLabel estAvgSyl;
+    private javax.swing.JLabel estTotSyl;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable topTable;
+    private javax.swing.JLabel totWrds;
+    private javax.swing.JLabel uniqueWrds;
     // End of variables declaration//GEN-END:variables
 
+    public void computeVariablesForGUI(wordList wrdLst){
+        int totalWords = 0;//, totalSyllables = 0;
+        double averageLength = 0, totalSyllables = 0;
+        int uniqueWords = wrdLst.getWordList().size();
+        for (word wrd : wrdLst.getWordList()){
+            totalWords += wrd.getFrequency();
+            averageLength += (wrd.getLength()*wrd.getFrequency());
+            totalSyllables += (wrd.getSyllables()*wrd.getFrequency());
+        }//end for loop
+        averageLength = averageLength / totalWords;
+        double averageSyllables = totalSyllables / totalWords;
+        
+        DecimalFormat hundreths = new DecimalFormat("#.##");
+        DecimalFormat ones = new DecimalFormat("#");
+        
+        totWrds.setText((new Integer(totalWords)).toString());
+        uniqueWrds.setText((new Integer(uniqueWords)).toString());
+        avgWrdLng.setText(hundreths.format(averageLength));//round double to nearest hundreth
+        estTotSyl.setText(ones.format(totalSyllables));
+        estAvgSyl.setText(hundreths.format(averageSyllables));//round double to nearest hundreth
+        
+        ArrayList<word> tt = wrdLst.topTenFrequency();
+        for (int i = 0; i < tt.size(); i++) {
+            word e = tt.get(i);
+            topTable.setValueAt(e.getLetters(), i, 0);
+            topTable.setValueAt(e.getSyllables(), i, 1);
+            topTable.setValueAt(e.getFrequency(), i, 2);
+        }
+    }//end computeVariables for GUI
+    
 }
