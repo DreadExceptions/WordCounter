@@ -164,9 +164,11 @@ public class startFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        String hey = "Scotty likes bacon. I also like bacon. Everyone likes bacon.";
-        wordList tstr = new wordList(hey);
+    public static void main(String args[]) throws Exception {
+        String docUrl = "/home/marquis/Documents/Moorlands/Example.odt";
+        odtImport finalTest = new odtImport(docUrl);
+        
+        wordList tstr = new wordList(finalTest.fullString());
         
         /*ArrayList<word> tst = new ArrayList<>();
         tst.add(new word("beta"));
