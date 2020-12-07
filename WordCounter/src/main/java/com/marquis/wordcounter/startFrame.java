@@ -164,6 +164,22 @@ public class startFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    public void runFrame(String docUrl) throws Exception {
+        odtImport mprt = new odtImport(docUrl);
+        wordList lst = new wordList(mprt.fullString());
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                startFrame GUI = new startFrame();
+                GUI.computeVariablesForGUI(lst);
+                GUI.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                GUI.setVisible(true);
+            }
+        });
+        
+    }
+    
     public static void main(String args[]) throws Exception {
         String docUrl = "/home/marquis/Documents/Moorlands/Example.odt";
         odtImport finalTest = new odtImport(docUrl);

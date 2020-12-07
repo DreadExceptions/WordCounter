@@ -15,6 +15,7 @@ public class wordList {
     private ArrayList<word> lstWrds;
     private String passage;
     private final String RGX = "[\\W]"; //regex to exclude all non letters/numbers.
+    //original RGX = "[\\W]"
     
     public wordList() {
         this.lstWrds = new ArrayList<word>();
