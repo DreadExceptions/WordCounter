@@ -181,7 +181,7 @@ public class startFrame extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) throws Exception {
-        String docUrl = "/home/marquis/Documents/Moorlands/Example.odt";
+        String docUrl = "/home/marquis/Documents/Poetry/Static/soma.odt";
         odtImport finalTest = new odtImport(docUrl);
         
         wordList tstr = new wordList(finalTest.fullString());
