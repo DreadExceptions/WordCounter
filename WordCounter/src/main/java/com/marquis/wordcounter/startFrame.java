@@ -181,7 +181,7 @@ public class startFrame extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) throws Exception {
-        String docUrl = "/home/marquis/Documents/Poetry/Static/soma.odt";
+        String docUrl = "/home/marquis/Documents/Poetry/Workshop/But it really was a dream/But it really was a dream 7 rhyme.odt";
         odtImport finalTest = new odtImport(docUrl);
         
         wordList tstr = new wordList(finalTest.fullString());
